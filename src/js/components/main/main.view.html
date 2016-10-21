@@ -1,0 +1,52 @@
+<select ng-model="mainCtrl.searchCat">
+  <option value="all">All</option>
+  <option value="dark">dark</option>
+  <option value="cold">cold</option>
+  <option value="awesome">awesome</option>
+  <option value="dry">dry</option>
+  <option value="hot">hot</option>
+  <option value="summer">summer</option>
+  <option value="winter">winter</option>
+  <option value="warm">warm</option>
+  <option value="lucid">lucid</option>
+  <option value="spring">spring</option>
+</select>
+<table>
+  <thead>
+    <th>Tea</th><th>Information</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in mainCtrl.items | sortCat: mainCtrl.searchCat">
+      <td>
+        <img src="{{item.imageurl}}" alt="" />
+      </td>
+      <td>
+        <h2>{{item.name}}</h2>
+        <p>
+          Price: {{item.price | toPrice}}
+        </p>
+        <p>
+          Ingrediants: {{item.ingredients}}
+        </p>
+        <p>
+          Rating: {{item.rating}}
+        </p>
+        <p>
+          In stock: {{item.instock}}
+        </p>
+        <p>
+          Categories: <ul>
+            <li ng-repeat="categorie in item.catergories">{{categorie[1]}}</li>
+          </ul>
+        </p>
+        <div class="quant">
+          <label for="">Quantity</label>
+          <select name="quantSelect" ng-model="">
+            <option value="option">option</option>
+          </select>
+        </div>
+        <button type="button" class="btn">Add to Bag</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
