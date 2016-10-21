@@ -13,6 +13,11 @@
         controller: 'mainController',
         controllerAs: 'mainCtrl'
       })
+      .when('/cart', {
+        templateUrl: 'js/components/cart/cart.view.html',
+        controller: 'cartController',
+        controllerAs: 'cartCtrl'
+      })
       .otherwise('/');
     }
 

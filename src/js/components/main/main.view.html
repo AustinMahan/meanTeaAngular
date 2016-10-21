@@ -11,6 +11,7 @@
   <option value="lucid">lucid</option>
   <option value="spring">spring</option>
 </select>
+<button class="btn" ng-click="mainCtrl.cart()">Checkout | {{mainCtrl.cartLen}}</button>
 <table>
   <thead>
     <th>Tea</th><th>Information</th>
@@ -41,11 +42,11 @@
         </p>
         <div class="quant">
           <label for="">Quantity</label>
-          <select name="quantSelect" ng-model="">
-            <option value="option">option</option>
+          <select name="quantSelect" ng-model="quant" ng-init='quant=1'>
+            <option ng-repeat="num in mainCtrl.range(item.quantity)">{{num}}</option>
           </select>
         </div>
-        <button type="button" class="btn">Add to Bag</button>
+        <button type="button" class="btn" ng-click="mainCtrl.add(item, quant)">Add to Bag</button>
       </td>
     </tr>
   </tbody>

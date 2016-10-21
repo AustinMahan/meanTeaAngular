@@ -19,7 +19,6 @@
       if (str == 'all') return arr
       return arr.filter(function (item) {
         var isThere = false
-        console.log(item);
         item.catergories.forEach(function (categorie) {
           if (categorie[1] == str) {
             isThere = true

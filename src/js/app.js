@@ -10,6 +10,7 @@
       'Services',
       'myApp.config',
       'myApp.components.main',
+      'myApp.components.cart',
     ])
 
 })();
