@@ -1,1 +1,32 @@
 <h1>Cart</h1>
+<table class="table">
+  <thead>
+    <th>Product</th><th>Quantity</th><th>Sub-Total</th><th>Total: {{cartCtrl.total | toPrice}}</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in cartCtrl.cart track by $index">
+      <td>
+        <h1>{{item.name}}</h1>
+        <img ng-src="{{item.imageurl}}" alt="" />
+        <p>
+          Caffeine Scale: {{item.caffeinescale}}
+        </p>
+        <p>
+          Ingredients: {{item.ingredients}}
+        </p>
+        <p>
+          Rating: {{item.rating}}
+        </p>
+      </td>
+      <td>
+        {{item.quant}}
+      </td>
+      <td>
+        {{item.quant * item.price | toPrice}}
+      </td>
+      <td>
+        <button type="button" class="btn" ng-click="cartCtrl.remove(item, $index)">Remove</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

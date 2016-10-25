@@ -1,25 +1,16 @@
-<select ng-model="mainCtrl.searchCat">
+<p>Search by name: <input type="text" ng-model="mainCtrl.searchName" placeholder="ex: Angular mix">Search by catergories: <select ng-model="mainCtrl.searchCat">
   <option value="all">All</option>
-  <option value="dark">dark</option>
-  <option value="cold">cold</option>
-  <option value="awesome">awesome</option>
-  <option value="dry">dry</option>
-  <option value="hot">hot</option>
-  <option value="summer">summer</option>
-  <option value="winter">winter</option>
-  <option value="warm">warm</option>
-  <option value="lucid">lucid</option>
-  <option value="spring">spring</option>
-</select>
+  <option ng-repeat="opt in mainCtrl.options">{{opt}}</option>
+</select></p>
 <button class="btn" ng-click="mainCtrl.cart()">Checkout | {{mainCtrl.cartLen}}</button>
-<table>
+<table class="table">
   <thead>
     <th>Tea</th><th>Information</th>
   </thead>
   <tbody>
-    <tr ng-repeat="item in mainCtrl.items | sortCat: mainCtrl.searchCat">
+    <tr ng-repeat="item in mainCtrl.items | sortCat: mainCtrl.searchCat | sortName:mainCtrl.searchName">
       <td>
-        <img src="{{item.imageurl}}" alt="" />
+        <img ng-src="{{item.imageurl}}" alt="" />
       </td>
       <td>
         <h2>{{item.name}}</h2>
@@ -33,7 +24,7 @@
           Rating: {{item.rating}}
         </p>
         <p>
-          In stock: {{item.instock}}
+          In stock: {{item.quantity > 0}}
         </p>
         <p>
           Categories: <ul>
@@ -46,7 +37,7 @@
             <option ng-repeat="num in mainCtrl.range(item.quantity)">{{num}}</option>
           </select>
         </div>
-        <button type="button" class="btn" ng-click="mainCtrl.add(item, quant)">Add to Bag</button>
+        <button type="button" class="btn add" ng-click="mainCtrl.add(item, quant)" ng-disabled="item.quantity < 1">Add to Bag</button>
       </td>
     </tr>
   </tbody>

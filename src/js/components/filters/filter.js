@@ -4,6 +4,7 @@
     .module('myApp')
     .filter('toPrice', toPrice)
     .filter('sortCat', sortCat)
+    .filter('sortName', sortName)
 
   function toPrice() {
     return (num) => {
@@ -14,9 +15,21 @@
     }
   }
 
+  function sortName() {
+    return (arr, name) => {
+      if (name) {
+        return arr.filter(function (item) {
+          return item.name.toLowerCase().indexOf(name.toLowerCase()) != -1
+        })
+      }
+      return arr
+    }
+  }
+
   function sortCat() {
     return (arr, str) => {
       if (str == 'all') return arr
+
       return arr.filter(function (item) {
         var isThere = false
         item.catergories.forEach(function (categorie) {
